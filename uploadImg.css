@@ -1,0 +1,68 @@
+.upload-button {
+  display: inline-block;
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+.upload-button input[type="file"] {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 99;
+  cursor: pointer;
+}
+.upload-button input[type="file"]:hover + .upload-btn-icon,
+.upload-button input[type="file"]:active + .upload-btn-icon {
+  border-color: #45ac34;
+}
+.upload-button input[type="file"]:hover + .upload-btn-icon > .icon-add::before,
+.upload-button input[type="file"]:active + .upload-btn-icon > .icon-add::before,
+.upload-button input[type="file"]:hover + .upload-btn-icon > .icon-add::after,
+.upload-button input[type="file"]:active + .upload-btn-icon > .icon-add::after {
+  background-color: #45ac34;
+}
+.upload-button .preview-img {
+  pointer-events: none;
+}
+.upload-btn-icon {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  padding-top: 27px;
+  border: 2px dashed #ddd;
+}
+.upload-btn-icon .icon-add {
+  position: relative;
+  display: inline-block;
+  width: 42px;
+  height: 42px;
+}
+.upload-btn-icon .icon-add::before,
+.upload-btn-icon .icon-add::after {
+  content: " ";
+  position: absolute;
+  background-color: #dddddd;
+  border-radius: 2px;
+}
+.upload-btn-icon .icon-add::before {
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+.upload-btn-icon .icon-add::after {
+  top: 0;
+  left: 50%;
+  width: 4px;
+  height: 100%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
