@@ -70,14 +70,13 @@
 		function renderCover($wrap, file, id) {
 			var $li = $('<li class="cover-item" data-id="' + id + '"></li>');
 			var $btnClose = $('<a class="btn-close"></a>').appendTo($li);
+			var $btnSetCover = $('<a class="btn-set-cover"></a>').appendTo($li);
 
 			// 设为封面
-			if ($wrap.find('li').length) {
-				var $btnSetCover = $('<a class="btn-set-cover">设为封面</a>').appendTo($li);
-				$btnSetCover.on('click', function (e) {
-					e.preventDefault();
-				})
-			}
+			$btnSetCover.on('click', function (e) {
+				e.preventDefault();
+				$wrap.prepend($li);
+			})
 			// 删除	
 			$btnClose.on('click', function (e) {
 				e.preventDefault();

@@ -167,9 +167,19 @@
 }
 .cover-item .btn-set-cover {
   position: absolute;
+  top: 4px;
+  left: 4px;
+  right: 4px;
+  bottom: 4px;
+  z-index: 22;
+  cursor: pointer;
+}
+.cover-item .btn-set-cover:before {
+  content: '设为封面';
+  position: absolute;
   top: 50%;
-  left: 0;
-  right: 0;
+  left: -4px;
+  right: -4px;
   height: 0;
   margin-top: -10px;
   font-size: 10px;
@@ -180,10 +190,12 @@
   background-color: rgba(0, 0, 0, 0.75);
   -webkit-transition: all .3s;
   transition: all .3s;
-  cursor: pointer;
 }
-.cover-item:hover .btn-set-cover,
-.cover-item:focus .btn-set-cover {
+.cover-item .btn-set-cover:hover:before,
+.cover-item .btn-set-cover:focus:before {
   height: 24px;
   opacity: 1;
+}
+.cover-item:first-child .btn-set-cover {
+  display: none;
 }
