@@ -1,6 +1,10 @@
 @mainColor: #45ac34;
+@redColor: #fa2322;
+@imgSize: 100px;
+@btnCloseColor: #555;
+@borderColor: #cecece;
 
-.icon-add(@size: 24px, @weight: 3px, @color: #ddd) {
+.icon-add(@size: 24, @weight: 3, @color: @borderColor) {
   position: relative;
   display: inline-block;
   width: @size + 0px;
@@ -27,11 +31,12 @@
   }
 }
 
+// 上传按钮
 .upload-button {
   display: inline-block;
   position: relative;
-  width: 100px;
-  height: 100px;
+  width: @imgSize;
+  height: @imgSize;
   input[type="file"] {
     position: absolute;
     left: 0;
@@ -65,8 +70,93 @@
   height: 100%;
   text-align: center;
   padding-top: 27px;
-  border: 2px dashed #ddd;
+  border: 2px dashed @borderColor;
   .icon-add {
     .icon-add(42, 4)
+  }
+}
+
+// 关闭按钮
+.btn-close {
+  .icon-add(12, 2, #fff);
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  border: 3px solid @btnCloseColor;
+  border-radius: 100%;
+  background-color: @btnCloseColor;
+  transform: rotate(45deg);
+  cursor: pointer;
+  &:hover, &:active {
+    border-color: @redColor;
+    background-color: @redColor;
+  }
+}
+
+// 封面设置
+.module-upload-cover {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.cover-item {
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: @imgSize;
+  height: @imgSize;
+  margin-right: 16px;
+  margin-bottom: 16px;
+  padding: 4px;
+  border: 1px dashed @borderColor;
+  background-color: #fff;
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    outline: 0;
+  }
+  &:first-child:before {
+    content: '封';
+    position: absolute;
+    box-sizing: border-box;
+    left: -5px;
+    top: -2px;
+    width: 28px;
+    height: 28px;
+    padding-top: 1px;
+    text-align: center;
+    font-size: 10px;
+    color: #fff;
+    font-style: normal;
+    background: url(tag.png) no-repeat top center;
+    background-size: 100% 100%;
+  }
+  .btn-set-cover {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 0;
+    margin-top: -10px;
+    font-size: 10px;
+    line-height: 24px;
+    color: #fff;
+    text-align: center;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, .75);
+    transition: all .3s;
+    cursor: pointer;
+  }
+  &:hover, &:focus {
+    .btn-set-cover {
+      height: 24px;
+      opacity: 1;
+    }
   }
 }

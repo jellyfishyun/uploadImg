@@ -35,7 +35,7 @@
   height: 100%;
   text-align: center;
   padding-top: 27px;
-  border: 2px dashed #ddd;
+  border: 2px dashed #cecece;
 }
 .upload-btn-icon .icon-add {
   position: relative;
@@ -47,7 +47,7 @@
 .upload-btn-icon .icon-add::after {
   content: " ";
   position: absolute;
-  background-color: #dddddd;
+  background-color: #cecece;
   border-radius: 2px;
 }
 .upload-btn-icon .icon-add::before {
@@ -65,4 +65,125 @@
   height: 100%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
+}
+.btn-close {
+  position: relative;
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  border: 3px solid #555555;
+  border-radius: 100%;
+  background-color: #555555;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  cursor: pointer;
+}
+.btn-close::before,
+.btn-close::after {
+  content: " ";
+  position: absolute;
+  background-color: #ffffff;
+  border-radius: 1px;
+}
+.btn-close::before {
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+.btn-close::after {
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 100%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+.btn-close:hover,
+.btn-close:active {
+  border-color: #fa2322;
+  background-color: #fa2322;
+}
+.module-upload-cover {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.cover-item {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100px;
+  height: 100px;
+  margin-right: 16px;
+  margin-bottom: 16px;
+  padding: 4px;
+  border: 1px dashed #cecece;
+  background-color: #fff;
+}
+.cover-item img {
+  max-width: 100%;
+  max-height: 100%;
+  outline: 0;
+}
+.cover-item:first-child:before {
+  content: '封';
+  position: absolute;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  left: -5px;
+  top: -2px;
+  width: 28px;
+  height: 28px;
+  padding-top: 1px;
+  text-align: center;
+  font-size: 10px;
+  color: #fff;
+  font-style: normal;
+  background: url(tag.png) no-repeat top center;
+  background-size: 100% 100%;
+}
+.cover-item .btn-set-cover {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 0;
+  margin-top: -10px;
+  font-size: 10px;
+  line-height: 24px;
+  color: #fff;
+  text-align: center;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  cursor: pointer;
+}
+.cover-item:hover .btn-set-cover,
+.cover-item:focus .btn-set-cover {
+  height: 24px;
+  opacity: 1;
 }
