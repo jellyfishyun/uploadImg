@@ -13,96 +13,52 @@
 </head>
 
 <body>
-	<ul class="module-upload-cover" style="width: 540px;margin-top: 20px;">
-		<!-- <li class="cover-item" data-id="1">
-			<img src="../../timg.jpg" alt="">
-			<a class="btn-close"></a>
-		</li>
-		<li class="cover-item" data-id="2">
-			<img src="../../timg.jpg" alt="">
-			<a class="btn-close"></a>
-			<a class="btn-set-cover">设为封面</a>
-		</li> -->
-	</ul>
-	<!-- 上传文件按钮 -->
-	<label id="btnUpLoadCover" class="upload-button">
-		<input type="file" accept="image/*">
-		<span class="upload-btn-icon"><i class="icon-add"></i></span>
-	</label>
+	<!-- 上传封面 -->
+	<div class="module-upload-cover module-upload-img" style="width: 540px;margin-top: 20px;">
+		<ul class="uploaded-list"></ul>
+		<!-- 上传文件按钮 -->
+		<label class="upload-button">
+			<input type="file" accept="image/jpg,image/jpeg,image/png">
+			<span class="upload-btn-icon"><i class="icon-add"></i></span>
+		</label>
+	</div>
+	<!-- 上传关键图片 -->
+	<div class="module-upload-keyImg module-upload-img" style="width: 540px;margin-top: 20px;">
+		<ul class="uploaded-list"></ul>
+		<!-- 上传文件按钮 -->
+		<label class="upload-button">
+			<input type="file" accept="image/jpg,image/jpeg,image/png">
+			<span class="upload-btn-icon"><i class="icon-add"></i></span>
+		</label>
+	</div>
+
 	<script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="imgUpload.js"></script>
+
 	<script type="text/javascript">
 		$(function () {
-			var IMG_SIZE = 3 * 1024 * 1024
-			$('#btnUpLoadCover').on('change', 'input', function (e) {
-				if (!e.target.files.length) return;
-
-				var file = e.target.files[0];
-				if (file.size > IMG_SIZE) {
-					alert('图片尺寸不能大于3M!');
-					return;
-				}
-
-				renderCover($('.module-upload-cover'), file, '2')
-			})
-		});
-
-		// 图片上传服务器
-		function uploadImg(url, file, callback) {
-			var form = new FormData();
-			form.append('file', file);
-
-			$.ajax({
-				url: url,
-				type: 'POST',
-				processData: false, // 用于对data参数进行序列化处理 这里必须false
-				contentType: false, // 必须
-				data: form,
-				success: function (data) {
-					callback(data)
+			// 设置封面	
+			$('.module-upload-cover').imgUpload({
+				len: 3,
+				uploadUrl: '', //上传路径
+				onSuccess: function (id) {
+					// 
 				},
-				error: function (err) {
+				onError: function (err) {
 					alert(err)
-				}
-			})
-		}
-
-		// 封面
-		function renderCover($wrap, file, id) {
-			var $li = $('<li class="cover-item" data-id="' + id + '"></li>');
-			var $btnClose = $('<a class="btn-close"></a>').appendTo($li);
-			var $btnSetCover = $('<a class="btn-set-cover"></a>').appendTo($li);
-
-			// 设为封面
-			$btnSetCover.on('click', function (e) {
-				e.preventDefault();
-				$wrap.prepend($li);
-			})
-			// 删除	
-			$btnClose.on('click', function (e) {
-				e.preventDefault();
-				$li.off().remove()
-			})
-
-			previewImg(file, function (img) {
-				$(img).appendTo($li);
-				$li.appendTo($wrap);
+				} //失败回调
 			});
-		}
-
-		//图片预览
-		function previewImg(file, callback) {
-			var reader = new FileReader();
-			var img = new Image();
-
-			reader.onload = function (e) {
-				img.src = e.target.result;
-			};
-			reader.readAsDataURL(file);
-
-			img.onload = function () {
-				callback(img)
-			}
-		}
+			// 上传关键图片	
+			$('.module-upload-keyImg').imgUpload({
+				uploadUrl: '', //上传路径
+				onSuccess: function () {
+					// 
+				},
+				onError: function () {
+					alert(err)
+				} //失败回调
+			});
+		});
 	</script>
 </body>
 

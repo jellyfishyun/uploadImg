@@ -93,49 +93,60 @@
   }
 }
 
-// 封面设置
-.module-upload-cover {
-  margin: 0;
-  padding-left: 0;
-  list-style: none;
+// 上传图片
+.module-upload-img {
   display: flex;
   align-items: flex-start;
   flex-wrap: wrap;
+  .uploaded-list {
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  .uploaded-item {
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: @imgSize;
+    height: @imgSize;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    padding: 4px;
+    border: 1px dashed @borderColor;
+    background-color: #fff;
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      outline: 0;
+    }
+  }
 }
 
-.cover-item {
-  box-sizing: border-box;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: @imgSize;
-  height: @imgSize;
-  margin-right: 16px;
-  margin-bottom: 16px;
-  padding: 4px;
-  border: 1px dashed @borderColor;
-  background-color: #fff;
-  img {
-    max-width: 100%;
-    max-height: 100%;
-    outline: 0;
-  }
-  &:first-child:before {
-    content: '封';
-    position: absolute;
-    box-sizing: border-box;
-    left: -5px;
-    top: -2px;
-    width: 28px;
-    height: 28px;
-    padding-top: 1px;
-    text-align: center;
-    font-size: 10px;
-    color: #fff;
-    font-style: normal;
-    background: url(tag.png) no-repeat top center;
-    background-size: 100% 100%;
+
+// 封面设置
+.module-upload-cover {
+  .uploaded-item {
+    &:first-child:before {
+      content: '封';
+      position: absolute;
+      box-sizing: border-box;
+      left: -5px;
+      top: -2px;
+      width: 28px;
+      height: 28px;
+      padding-top: 1px;
+      text-align: center;
+      font-size: 10px;
+      color: #fff;
+      font-style: normal;
+      background: url(tag.png) no-repeat top center;
+      background-size: 100% 100%;
+    }
   }
   .btn-set-cover {
     position: absolute;
@@ -168,9 +179,11 @@
     z-index: 22;
     cursor: pointer;
   }
-  &:first-child {
+  .uploaded-item:first-child {
     .btn-set-cover {
       display: none;
     }
   }
 }
+
+

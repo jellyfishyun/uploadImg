@@ -109,7 +109,17 @@
   border-color: #fa2322;
   background-color: #fa2322;
 }
-.module-upload-cover {
+.module-upload-img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.module-upload-img .uploaded-list {
   margin: 0;
   padding-left: 0;
   list-style: none;
@@ -122,7 +132,7 @@
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
-.cover-item {
+.module-upload-img .uploaded-item {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   position: relative;
@@ -143,12 +153,12 @@
   border: 1px dashed #cecece;
   background-color: #fff;
 }
-.cover-item img {
+.module-upload-img .uploaded-item img {
   max-width: 100%;
   max-height: 100%;
   outline: 0;
 }
-.cover-item:first-child:before {
+.module-upload-cover .uploaded-item:first-child:before {
   content: '封';
   position: absolute;
   -webkit-box-sizing: border-box;
@@ -165,7 +175,7 @@
   background: url(tag.png) no-repeat top center;
   background-size: 100% 100%;
 }
-.cover-item .btn-set-cover {
+.module-upload-cover .btn-set-cover {
   position: absolute;
   top: 4px;
   left: 4px;
@@ -174,7 +184,7 @@
   z-index: 22;
   cursor: pointer;
 }
-.cover-item .btn-set-cover:before {
+.module-upload-cover .btn-set-cover:before {
   content: '设为封面';
   position: absolute;
   top: 50%;
@@ -191,11 +201,11 @@
   -webkit-transition: all .3s;
   transition: all .3s;
 }
-.cover-item .btn-set-cover:hover:before,
-.cover-item .btn-set-cover:focus:before {
+.module-upload-cover .btn-set-cover:hover:before,
+.module-upload-cover .btn-set-cover:focus:before {
   height: 24px;
   opacity: 1;
 }
-.cover-item:first-child .btn-set-cover {
+.module-upload-cover .uploaded-item:first-child .btn-set-cover {
   display: none;
 }
